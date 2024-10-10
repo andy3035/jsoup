@@ -4,10 +4,7 @@ import org.jsoup.integration.ParseTest;
 import org.jsoup.internal.StringUtil;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.UncheckedIOException;
+import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -544,5 +541,19 @@ public class CharacterReaderTest {
         assertEquals("He\"llo ", r.consumeAttributeQuoted(true));
         assertEquals('&', r.consume());
     }
+    @Test
+    public void testCloseWhenReaderIsAlreadyNull() {
+        // Arrange
+        CharacterReader characterReader = new CharacterReader(new StringReader("Test input"));
+        characterReader.close();
+
+        // Act
+        characterReader.close();
+
+        // Assert
+        // No direct access to reader, but we expect no exceptions during the second close
+        assertDoesNotThrow(characterReader::close, "Closing an already closed reader should not throw an exception");
+    }
+
 
 }

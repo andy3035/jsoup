@@ -43,4 +43,24 @@ public class ValidateTest {
         }
         assertTrue(threw);
     }
+
+    @Test
+    public void testNotEmpty(){
+
+        String testNullString = null;
+        String testEmptyString = "";
+        String validString = "test string is-valid";
+
+        // Valid string case
+        Assertions.assertDoesNotThrow(() -> Validate.notEmpty(validString), "Valid string should not throw an exception");
+
+        // Empty string case
+        ValidationException emptyException = Assertions.assertThrows(ValidationException.class, () -> Validate.notEmpty(testEmptyString));
+        Assertions.assertEquals("String must not be empty", emptyException.getMessage());
+
+        // Null string case
+        ValidationException nullException = Assertions.assertThrows(ValidationException.class, () -> Validate.notEmpty(testNullString));
+        Assertions.assertEquals("String must not be empty", nullException.getMessage());
+
+    }
 }

@@ -337,4 +337,26 @@ public class DataUtilTest {
 
         assertEquals(input, read);
     }
+    @Test
+    void parseInputStreamTest(){
+
+        InputStream emptyInputStream = new ByteArrayInputStream(new byte[0]);
+        DataUtil.CharsetDoc charsetDoc = new DataUtil.CharsetDoc(StandardCharsets.UTF_8, null, emptyInputStream);
+        String testURL = "http://test.com";
+        Parser parser = Parser.htmlParser();
+
+        Document result = null;
+        try {
+            result = DataUtil.parseInputStream(charsetDoc, testURL, parser);
+        } catch (IOException e) {
+        }
+
+        // Assert
+        assertNotNull(result, "For an empty input, the document should not be null");
+        assertEquals("", result.text(), "The parsed document from an empty stream should have no text content");
+
+
+    }
+
+
 }
