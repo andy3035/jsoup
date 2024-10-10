@@ -33,12 +33,83 @@ public class HtmlTreeBuilderStateTest {
         return array;
     }
 
+    
+
     static void ensureSorted(List<Object[]> constants) {
         for (Object[] array : constants) {
             Object[] copy = Arrays.copyOf(array, array.length);
             Arrays.sort(array);
             assertArrayEquals(array, copy);
         }
+    }
+
+    // Vérifier les balises <frameset> imbriqués
+    @Test
+    public void testNestedFrameset() {
+        // Arrange
+        String html = "<frameset><frameset><frame></frameset></frameset>";
+
+        // Act
+        String parsed = Jsoup.parse(html).toString();
+
+        // Assert
+        assertTrue(parsed.contains("<frame>"));
+    }
+
+    // Vérifier la balise <caption> dans une table
+    @Test
+    public void testTableCaption() {
+        // Arrange
+        String html = "<table><caption>Caption Content</caption></table>";
+
+        // Act
+        Document doc = Jsoup.parse(html);
+
+        // Assert
+        assertNotNull(doc.selectFirst("caption"));
+        assertEquals("Caption Content", doc.selectFirst("caption").text());
+    }
+
+    // Vérifier les balises <colgroup> et <col> dans une table
+    @Test
+    public void testTableColgroup() {
+        // Arrange
+        String html = "<table><colgroup><col></colgroup></table>";
+
+        // Act
+        Document doc = Jsoup.parse(html);
+
+        // Assert
+        assertNotNull(doc.selectFirst("colgroup"));
+        assertNotNull(doc.selectFirst("col"));
+    }
+
+    // Vérifier qu'il n'y a qu'un seul <form> même s'il est imbriqué
+    @Test
+    public void testSingleForm() {
+        // Arrange
+        String html = "<form><div><form></form></div></form>";
+
+        // Act
+        Document doc = Jsoup.parse(html);
+
+        // Assert
+        assertEquals(1, doc.select("form").size());
+    }
+
+    // Vérifier la gestion de la balise <isindex> et sa conversion en formulaire
+    @Test
+    public void testIsindexHandling() {
+        // Arrange
+        String html = "<isindex prompt='Search here'>";
+
+        // Act
+        Document doc = Jsoup.parse(html);
+
+        // Assert
+        assertNotNull(doc.selectFirst("form"));
+        assertNotNull(doc.selectFirst("input[name=isindex]"));
+        assertEquals("Search here", doc.selectFirst("label").text());
     }
 
     @Test
