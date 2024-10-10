@@ -16,6 +16,11 @@ Ce test vérifie qu'un seul élément <form> est conservé même avec plusieurs 
 ### 5. testIsindexHandling
 Ce test vérifie la conversion de la balise obsolète <isindex> en formulare pour guarantir la compatibilité avec les ancients documents HTML.
 
+Dans ce package, nous avons travaillé sur le fichier CharacterReaderTest.java sur la méthode `testCloseWhenReaderIsAlreadyNull()`.
+Le test permet de vérifier le fonctionnement de la méthode quand elle doit fermer un reader déjà fermé. 
+
+[testCloseWhenReaderIsAlreadyNull()](https://github.com/YellowKappa/jsoup/blob/master/src/test/java/org/jsoup/parser/CharacterReaderTest.java)
+
 ## org.jsoup.helper 
 
 Dans ce package nous avons travaillé sur le fichier `ValidateTest.java` sur la méthode `testNotEmpty()`.
@@ -33,14 +38,11 @@ Si le document est vide, il faut que le document résultant ne contient rien.
 
 Dans ce package, nous avons travaillé sur le fichier `SimpleBufferedTest.java` sur la méthode `testReadAfterEndOfStream()` et `testMarkAndReset()`.
 
-
+Le test de la fonctionnalité de marquage et de réinitialisation est crucial car il garantit que la classe `SimpleBufferedInput` supporte correctement le marquage d'une position de lecture et la réinitialisation à cette position, ce qui est important pour les cas d'utilisation où les données doivent être relues sans rouvrir le flux.
 [testMarkAndReset()](https://github.com/YellowKappa/jsoup/blob/master/src/test/java/org/jsoup/internal/SimpleBufferedTest.java)
+
+Le test de lecture après la fin du flux permet de s'assurer que le flux renvoie correctement -1, ce qui signifie la fin de l'entrée et empêche la lecture au-delà des données disponibles.
 [testReadAfterEndOfStream()](https://github.com/YellowKappa/jsoup/blob/master/src/test/java/org/jsoup/internal/SimpleBufferedTest.java)
 
-## org.jsoup.parser
-Dans ce package, nous avons travaillé sur le fichier CharacterReaderTest.java sur la méthode `testCloseWhenReaderIsAlreadyNull()`.
-Le test permet de vérifier le fonctionnement de la méthode quand elle doit fermer un reader déjà fermé. 
-
-[testCloseWhenReaderIsAlreadyNull()](https://github.com/YellowKappa/jsoup/blob/master/src/test/java/org/jsoup/parser/CharacterReaderTest.java)
 
 
