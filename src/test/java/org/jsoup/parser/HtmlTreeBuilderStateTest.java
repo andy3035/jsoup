@@ -2,6 +2,7 @@ package org.jsoup.parser;
 
 import org.jsoup.Jsoup;
 import org.jsoup.internal.StringUtil;
+import org.jsoup.nodes.Document;
 import org.jsoup.parser.HtmlTreeBuilderState.Constants;
 import org.junit.jupiter.api.Test;
 
