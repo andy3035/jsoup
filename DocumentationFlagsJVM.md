@@ -1,7 +1,5 @@
 # Documentation Tâche 3 
 
-## Dans le cadre de la tâche j'ai ajouté les tests suivants:
-
 ## 1. Test avec -Xmx512m
 ### Description :
 Ce test limite la mémoire maximale allouée au tas Java à 512 Mo. Le tas est l'espace mémoire où les objets Java sont stockés pendant l'exécution.
