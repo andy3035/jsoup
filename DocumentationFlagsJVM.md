@@ -2,9 +2,9 @@
 
 ## 1. Test avec -Xmx512m
 ### Description :
-Ce test limite la mémoire maximale allouée au tas Java à 512 Mo. Le tas est l'espace mémoire où les objets Java sont stockés pendant l'exécution.
+Ce test limite la mémoire maximale alloué au tas Java à 512 Mo. Le tas est l'espace mémoire où les objets Java sont stockés pendant l'exécution.
 ### Justification:
-Ce drapeau a été choisi pour tester la capacité de jsoup à fonctionner dans des environnements à faible mémoire. Cela permet de s'assurer que l'application est optimisée et fonctionne correctement même avec des ressources limitées.
+Ce drapeau a été choisi pour tester la capacité de jsoup à fonctionner dans des environnements à faible mémoire. Cela permet de s'assurer que l'application est optimisée et fonctionne correctement meme avec des ressources limitées.
 
 ## 2. Test avec -XX:+UseG1GC
 ### Description :
@@ -22,10 +22,10 @@ Ce drapeau est utile pour le débogage. Si jsoup rencontre un problème lié à 
 ### Description :
 Ce drapeau active l'affichage des méthodes compilées par le compilateur JIT (Just-In-Time). La compilation JIT optimise le code Java en fonction des performances requises.
 ### Justification:
-Ce drapeau permet d'observer quelles méthodes sont compilées par la JVM et si certaines parties du code jsoup sont intensivement utilisées. Cela peut fournir des informations sur les performances globales et aider à détecter des points de ralentissement éventuels.
+Ce drapeau permet d'observer quelles méthodes sont compilées par la JVM et si certaines parties du code jsoup sont intensivement utilisées. Cela peut fournir des informations sur les performances globales et aider à détecter des points de ralenitssement éventuels.
 
 ## 5. Test avec -Xlog:gc*
 ### Description :
-Ce drapeau active la journalisation des événements liés à la gestion des déchets (Garbage Collection). Cela inclut les détails sur les cycles de GC, la mémoire récupérée, et la fréquence des collectes.
+Ce drapeau active la journalisation des événements liés à la gestion des déchets (Garbage Collection). Cela inclut les détails sur les cycles de GC, la mémoire récupéré, et la fréquence des collectes.
 ### Justification:
 Ce drapeau permet de surveiller la fréquence et l'efficacité des collectes de déchets pendant les tests. Cela est essentiel pour évaluer les performances de jsoup dans des scénarios où beaucoup d'objets sont créés et détruits (comme le traitement de grandes quantités de texte HTML).
