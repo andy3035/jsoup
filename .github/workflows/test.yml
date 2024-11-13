@@ -69,3 +69,4 @@ jobs:
           else
             echo "New coverage: $coverage%"
           fi
+
