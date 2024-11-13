@@ -1,3 +1,4 @@
+
 # Documentation Tâche 3 
 ## Andy Le 20218631
 
@@ -30,3 +31,8 @@ Ce drapeau permet d'observer quelles méthodes sont compilées par la JVM et si 
 Ce drapeau active la journalisation des événements liés à la gestion des déchets (Garbage Collection). Cela inclut les détails sur les cycles de GC, la mémoire récupéré, et la fréquence des collectes.
 ### Justification:
 Ce drapeau permet de surveiller la fréquence et l'efficacité des collectes de déchets pendant les tests. Cela est essentiel pour évaluer les performances de jsoup dans des scénarios où beaucoup d'objets sont créés et détruits (comme le traitement de grandes quantités de texte HTML).
+
+## 6. Petite blague 
+### Andy : I'm so sorry my dog ate my homework
+### M. Baudry : Your dog ate your coding assignement?
+### Andy : Yeah it took him a couple bytes
