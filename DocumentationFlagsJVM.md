@@ -38,7 +38,7 @@ Ce drapeau permet d'observer quelles méthodes sont compilées par la JVM et si 
 ### Type:
 Création de logs
 ### Description :
-Ce test active la journalisation des événements liés à la gestion des déchets (Garbage Collection). Cela inclut les détails sur les cycles de GC, la mémoire récupéré, et la fréquence des collectes.
+Ce test active la journalisation des événements liés à la gestion des déchets (Garbage Collection).
 ### Justification:
 Ce drapeau permet de surveiller la fréquence et l'efficacité des collectes de déchets pendant les tests. Cela est essentiel pour évaluer les performances de jsoup dans des scénarios où beaucoup d'objets sont créés et détruits (comme le traitement de grandes quantités de texte HTML).
 
