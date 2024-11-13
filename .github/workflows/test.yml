@@ -9,7 +9,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        # choosing to run a reduced set of LTS, current, and next, to balance coverage and execution time
         java: [17]
       fail-fast: false
     name: Test JDK ${{ matrix.java }}, ${{ matrix.os }}
@@ -24,10 +23,34 @@ jobs:
           distribution: 'zulu'
           cache: 'maven'
 
-      - name: Maven Compile
-        run: mvn -X compile -B --file pom.xml
+      # Test with -Xmx512m
+      - name: Maven Verify with -Xmx512m
+        env:
+          MAVEN_OPTS: "-Xmx512m"
+        run: mvn -X verify -B --file pom.xml
 
-      - name: Maven Verify
+      # Test with -XX:+UseG1GC
+      - name: Maven Verify with -XX:+UseG1GC
+        env:
+          MAVEN_OPTS: "-XX:+UseG1GC"
+        run: mvn -X verify -B --file pom.xml
+
+      # Test with -XX:+HeapDumpOnOutOfMemoryError
+      - name: Maven Verify with -XX:+HeapDumpOnOutOfMemoryError
+        env:
+          MAVEN_OPTS: "-XX:+HeapDumpOnOutOfMemoryError"
+        run: mvn -X verify -B --file pom.xml
+
+      # Test with -XX:+PrintCompilation
+      - name: Maven Verify with -XX:+PrintCompilation
+        env:
+          MAVEN_OPTS: "-XX:+PrintCompilation"
+        run: mvn -X verify -B --file pom.xml
+
+      # Test with -Xlog:gc*
+      - name: Maven Verify with -Xlog:gc*
+        env:
+          MAVEN_OPTS: "-Xlog:gc*"
         run: mvn -X verify -B --file pom.xml
 
       - name: Get JaCoCo Coverage
